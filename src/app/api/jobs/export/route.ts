@@ -9,23 +9,23 @@ export const runtime = 'nodejs';
 
 interface Job {
   id: string;
-  title: string;
-  company: string;
-  location: string;
-  country: string;
-  salary: string;
-  type: 'full-time' | 'part-time' | 'contract';
-  category: string;
-  experience: string;
-  description: string;
-  requirements: string[];
-  benefits: string[];
-  posted: string;
-  status: 'active' | 'paused' | 'closed';
-  applicants: number;
-  featured: boolean;
-  createdAt: string;
-  updatedAt: string;
+  title?: string;
+  company?: string;
+  location?: string;
+  country?: string;
+  salary?: string;
+  type?: 'full-time' | 'part-time' | 'contract';
+  category?: string;
+  experience?: string;
+  description?: string;
+  requirements?: string[];
+  benefits?: string[];
+  posted?: string;
+  status?: 'active' | 'paused' | 'closed';
+  applicants?: number;
+  featured?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // Convert JSON data to CSV format
@@ -57,23 +57,23 @@ function jsonToCSV(jobs: Job[]): string {
   // CSV rows
   const rows = jobs.map(job => [
     job.id,
-    `"${job.title.replace(/"/g, '""')}"`,
-    `"${job.company.replace(/"/g, '""')}"`,
-    `"${job.location.replace(/"/g, '""')}"`,
-    job.country,
-    `"${job.salary.replace(/"/g, '""')}"`,
-    job.type,
-    job.category,
-    job.experience,
-    `"${job.description.replace(/"/g, '""')}"`,
-    `"${job.requirements.join('; ').replace(/"/g, '""')}"`,
-    `"${job.benefits.join('; ').replace(/"/g, '""')}"`,
-    job.posted,
-    job.status,
-    job.applicants,
+    `"${(job.title || '').replace(/"/g, '""')}"`,
+    `"${(job.company || '').replace(/"/g, '""')}"`,
+    `"${(job.location || '').replace(/"/g, '""')}"`,
+    job.country || '',
+    `"${(job.salary || '').replace(/"/g, '""')}"`,
+    job.type || 'full-time',
+    job.category || '',
+    job.experience || '',
+    `"${(job.description || '').replace(/"/g, '""')}"`,
+    `"${(job.requirements || []).join('; ').replace(/"/g, '""')}"`,
+    `"${(job.benefits || []).join('; ').replace(/"/g, '""')}"`,
+    job.posted || '',
+    job.status || 'active',
+    job.applicants || 0,
     job.featured ? 'Yes' : 'No',
-    new Date(job.createdAt).toLocaleDateString(),
-    new Date(job.updatedAt).toLocaleDateString()
+    job.createdAt ? new Date(job.createdAt).toLocaleDateString() : '',
+    job.updatedAt ? new Date(job.updatedAt).toLocaleDateString() : ''
   ]);
 
   // Combine headers and rows
