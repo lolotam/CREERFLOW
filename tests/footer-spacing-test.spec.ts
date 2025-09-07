@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Footer Social Media Icons Spacing Test', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(2000);
   });

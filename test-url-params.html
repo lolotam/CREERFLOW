@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Parameter Test</title>
+</head>
+<body>
+    <h1>URL Parameter Test</h1>
+    <p>Test the category links:</p>
+    <ul>
+        <li><a href="/jobs?category=medical">Medical Jobs</a></li>
+        <li><a href="/jobs?category=nursing">Nursing Jobs</a></li>
+        <li><a href="/jobs?category=administration">Administration Jobs</a></li>
+    </ul>
+    
+    <script>
+        // Test URL parameter parsing
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        if (category) {
+            document.body.innerHTML += `<p>Category parameter detected: ${category}</p>`;
+        }
+    </script>
+</body>
+</html>

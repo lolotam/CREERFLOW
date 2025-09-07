@@ -10,7 +10,7 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('🚀 TESTING: Application Launch and Accessibility');
     
     // Navigate to the application
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('domcontentloaded');
     
     // Check if the page loads successfully
@@ -33,7 +33,7 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('🔐 TESTING: Admin Dashboard Login');
     
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Take screenshot of login page
@@ -45,15 +45,15 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     // Check if login form exists
     const usernameField = page.locator('input[name="username"]');
     const passwordField = page.locator('input[name="password"]');
-    const loginButton = page.locator('button[type="submit"]');
-    
-    const loginFormExists = await usernameField.count() > 0 && 
-                           await passwordField.count() > 0 && 
+    const loginButton = page.getByRole('button', { name: 'Sign In' });
+
+    const loginFormExists = await usernameField.count() > 0 &&
+                           await passwordField.count() > 0 &&
                            await loginButton.count() > 0;
-    
+
     console.log(`📋 Login form exists: ${loginFormExists}`);
     expect(loginFormExists).toBe(true);
-    
+
     // Perform login
     await usernameField.fill('admin');
     await passwordField.fill('@Ww55683677wW@');
@@ -76,12 +76,12 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('💼 TESTING: Job Management Section and Modal Styling');
     
     // Login first
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     await page.waitForURL('**/admin/dashboard');
     await page.waitForLoadState('networkidle');
@@ -110,10 +110,10 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('➕ TESTING: Add New Job Modal Styling');
     
     // Login and navigate to Job Management
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     await page.waitForURL('**/admin/dashboard');
     await page.click('text=Job Management');
     await page.waitForTimeout(3000);
@@ -179,10 +179,10 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('✏️ TESTING: Edit Job Modal Styling');
     
     // Login and navigate to Job Management
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     await page.waitForURL('**/admin/dashboard');
     await page.click('text=Job Management');
     await page.waitForTimeout(3000);
@@ -254,10 +254,10 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
     console.log('👁️ TESTING: Show Job Modal Styling');
     
     // Login and navigate to Job Management
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     await page.waitForURL('**/admin/dashboard');
     await page.click('text=Job Management');
     await page.waitForTimeout(3000);
@@ -332,7 +332,7 @@ test.describe('CareerFlow Application - Comprehensive Functionality Test', () =>
       '🎯 CAREERFLOW APPLICATION - COMPREHENSIVE FUNCTIONALITY TEST REPORT',
       '',
       '📅 Test Date: ' + new Date().toISOString(),
-      '🌐 Application URL: http://localhost:3000',
+      '🌐 Application URL: http://localhost:4444',
       '',
       '✅ TEST RESULTS SUMMARY:',
       '   🚀 Application Launch: PASSED',

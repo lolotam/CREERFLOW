@@ -70,7 +70,7 @@ startxref 318
 
 test.describe('CareerFlow Application Form', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/en/apply');
+    await page.goto('http://localhost:4444/en/apply');
     await expect(page).toHaveTitle(/CareerFlow/);
   });
 
@@ -223,7 +223,7 @@ test.describe('CareerFlow Application Form', () => {
 
   test('should verify webhook URL is correctly configured', async ({ page }) => {
     // Navigate to the API endpoint directly to test it
-    const response = await page.request.get('http://localhost:3000/api/submit-webhook');
+    const response = await page.request.get('http://localhost:4444/api/submit-webhook');
 
     // Should return 405 Method Not Allowed for GET request
     expect(response.status()).toBe(405);

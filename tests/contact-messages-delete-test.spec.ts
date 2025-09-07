@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Contact Messages Delete Function Test', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');

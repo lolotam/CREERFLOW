@@ -19,9 +19,9 @@ npm run dev
 - Automatic TypeScript compilation
 
 **Access Points**:
-- Frontend: http://localhost:3000
-- Admin Panel: http://localhost:3000/en/admin
-- Arabic Version: http://localhost:3000/ar
+- Frontend: http://localhost:4444
+- Admin Panel: http://localhost:4444/en/admin
+- Arabic Version: http://localhost:4444/ar
 
 ---
 
@@ -195,7 +195,7 @@ vercel --prod
 docker build -t careerflow .
 
 # Run Docker container
-docker run -p 3000:3000 careerflow
+docker run -p 4444:4444 careerflow
 
 # Docker Compose
 docker-compose up -d
@@ -332,7 +332,7 @@ NODE_ENV=staging npm run build
 ### Health Checks
 ```bash
 # Check application health
-curl http://localhost:3000/api/health
+curl http://localhost:4444/api/health
 
 # Check database connection
 node scripts/check-db.js

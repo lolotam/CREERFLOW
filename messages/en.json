@@ -1,0 +1,363 @@
+{
+  "navigation": {
+    "home": "Home",
+    "jobs": "Jobs",
+    "dashboard": "Dashboard",
+    "contact": "Contact",
+    "apply": "Apply",
+    "admin": "Admin",
+    "favorites": "Favorites",
+    "language": "العربية",
+    "english": "English"
+  },
+  "hero": {
+    "title": "Find Healthcare Jobs in Kuwait & Gulf",
+    "subtitle": "Curated roles in hospitals, clinics, and pharmacies - updated daily. Upload your resume and apply in minutes.",
+    "cta": "Start Your Journey",
+    "searchPlaceholder": "Job title or skills",
+    "locationPlaceholder": "Location",
+    "searchButton": "Search Jobs",
+    "uploadCV": "Upload CV",
+    "dashboardButton": "Your Future Dashboard",
+    "stats": {
+      "jobs": "10,000+ Jobs",
+      "companies": "500+ Companies",
+      "remote": "89 Remote Jobs"
+    }
+  },
+  "categories": {
+    "title": "Explore Career Categories",
+    "subtitle": "Find your perfect role across specialized healthcare fields in the Gulf region",
+    "browse": "Browse",
+    "medical": "Medical",
+    "nursing": "Nursing",
+    "radiology": "Radiology",
+    "pharmacy": "Pharmacy",
+    "dental": "Dental",
+    "administration": "Administration",
+    "descriptions": {
+      "medical": "Doctors, specialists, and medical professionals",
+      "nursing": "Registered nurses, practitioners, and care staff",
+      "radiology": "Radiologists, technicians, and imaging specialists",
+      "pharmacy": "Pharmacists, pharmacy technicians, and medication specialists",
+      "dental": "Dentists, oral health specialists, and dental professionals",
+      "administration": "Healthcare administrators, coordinators, and support staff"
+    },
+    "positions": {
+      "medical": "2,500+",
+      "nursing": "1,800+",
+      "radiology": "950+",
+      "pharmacy": "1,200+",
+      "dental": "800+",
+      "administration": "650+"
+    }
+  },
+  "howItWorks": {
+    "title": "How CareerFlow Works",
+    "subtitle": "Simple steps to get your dream healthcare job",
+    "step1": {
+      "title": "Create Profile",
+      "description": "Tell us about your skills and preferences"
+    },
+    "step2": {
+      "title": "Get Matches",
+      "description": "See roles that match your experience"
+    },
+    "step3": {
+      "title": "Quick Apply",
+      "description": "Upload your CV and track your application status"
+    }
+  },
+  "dashboard": {
+    "title": "Your Future Dashboard",
+    "subtitle": "Track applications, match scores, interviews, and offers in one place",
+    "preview": "Dashboard Preview",
+    "comingSoon": "Coming Soon",
+    "features": {
+      "matching": "Smart job matching based on your skills and preferences",
+      "tracking": "Track your application status and interview progress",
+      "analytics": "Career insights and performance analytics",
+      "notifications": "Real-time job alerts and updates"
+    }
+  },
+  "testimonials": {
+    "title": "Success Stories",
+    "subtitle": "Hear from healthcare professionals who found their dream jobs through CareerFlow"
+  },
+  "featuredJobs": {
+    "title": "Featured Jobs",
+    "subtitle": "Discover premium opportunities from top healthcare employers in the Gulf region",
+    "loading": "Loading featured jobs..."
+  },
+  "footer": {
+    "description": "Find healthcare jobs in Kuwait and the Gulf. Curated roles in hospitals, clinics, and pharmacies - updated daily.",
+    "topCategories": "Top Categories",
+    "stayUpdated": "Stay Updated",
+    "stayUpdatedDesc": "Get the latest healthcare jobs in your inbox",
+    "emailPlaceholder": "Email address",
+    "subscribe": "Subscribe",
+    "quickLinks": "Quick Links",
+    "trustedBy": "Trusted by 500+ healthcare employers across GCC countries",
+    "madeWith": "Made with",
+    "by": "by Waleed Mohammed Team",
+    "adminLogin": "Admin Login",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Learn how CareerFlow protects your personal information and respects your privacy.",
+      "lastUpdated": "Last updated",
+      "questionsTitle": "Questions About This Policy?",
+      "questionsText": "If you have any questions about this Privacy Policy or how we handle your personal information, please contact us:"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Please read these terms carefully before using CareerFlow. By accessing our platform, you agree to be bound by these terms.",
+      "lastUpdated": "Last updated",
+      "questionsTitle": "Questions About These Terms?",
+      "questionsText": "If you have any questions about these Terms of Service or need clarification on any provision, please contact us:",
+      "agreementText": "By continuing to use CareerFlow, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "description": "We're here to help you with your career journey. Reach out to us for any questions or support.",
+    "form": {
+      "title": "Send us a message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "map": {
+      "title": "Find Us"
+    },
+    "info": {
+      "phone": "Phone",
+      "address": "Address",
+      "email": "Email",
+      "openMaps": "Open in Google Maps"
+    },
+    "office": {
+      "title": "Our Office",
+      "address": "Kuwait - Salmiya",
+      "phone": "+96555683677",
+      "email": "info@careerflow.com"
+    }
+  },
+  "jobs": {
+    "title": "Find Your Dream Job",
+    "subtitle": "Discover thousands of opportunities from top healthcare employers",
+    "searchPlaceholder": "Search for jobs...",
+    "locationPlaceholder": "Location",
+    "searchButton": "Search Jobs",
+    "jobsFound": "TOTAL JOBS",
+    "showingResults": "",
+    "locationFilter": "Location",
+    "filters": "Filters",
+    "loadingFilters": "Loading filters...",
+    "categoryFilter": "Category",
+    "jobTypeFilter": "Job Type",
+    "experienceFilter": "Experience",
+    "salaryFilter": "Salary",
+    "sortMostRelevant": "Most Relevant",
+    "sortNewest": "Newest First",
+    "sortSalaryHigh": "Salary: High to Low",
+    "sortSalaryLow": "Salary: Low to High",
+    "sortBestMatch": "Best Match",
+    "noJobsFound": "No jobs found",
+    "noJobsDescription": "Try adjusting your filters or search terms to find more opportunities.",
+    "clearFilters": "Clear Filters",
+    "loadMore": "Load More",
+    "totalJobs": "Total Jobs",
+    "companies": "Companies",
+    "newThisWeek": "New This Week",
+    "remoteJobs": "Remote Jobs",
+    "results": {
+      "found": "jobs found",
+      "showing": "Showing",
+      "of": "of",
+      "results": "results",
+      "noJobs": "No jobs found",
+      "noJobsFound": "No jobs found",
+      "noJobsDesc": "Try adjusting your filters or search terms to find more opportunities.",
+      "clearFilters": "Clear Filters"
+    },
+    "sort": {
+      "mostRelevant": "Most Relevant",
+      "newest": "Newest First",
+      "salaryHighToLow": "Salary: High to Low",
+      "salaryLowToHigh": "Salary: Low to High",
+      "bestMatch": "Best Match"
+    },
+    "stats": {
+      "totalJobs": "Total Jobs",
+      "companies": "Companies",
+      "newThisWeek": "New This Week",
+      "remoteJobs": "Remote Jobs"
+    },
+    "card": {
+      "featured": "Featured",
+      "match": "match",
+      "clickToFlip": "Click to flip",
+      "applyNow": "Apply Now",
+      "jobDetails": "Job Details",
+      "description": "Description",
+      "requirements": "Requirements",
+      "benefits": "Benefits",
+      "posted": "Posted",
+      "applicants": "applicants"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Portal",
+      "subtitle": "CareerFlow Administration",
+      "username": "Username",
+      "password": "Password",
+      "signIn": "Sign In"
+    }
+  },
+  "application": {
+    "title": "Complete Your Application",
+    "subtitle": "Fill out all sections below to submit your application",
+    "backToJobs": "Back to Jobs",
+    "steps": "Complete your application in 4 easy steps",
+    "header": {
+      "applyFor": "Apply for",
+      "jobTitle": "Senior Registered Nurse",
+      "company": "Kuwait General Hospital",
+      "location": "Kuwait City, Kuwait",
+      "type": "Full-time",
+      "salary": "KWD 22,000 - 29,000",
+      "annualSalary": "Annual Salary"
+    },
+    "sections": {
+      "personalInfo": "Personal Information",
+      "experienceSkills": "Experience & Skills",
+      "documents": "Documents",
+      "additionalInfo": "Additional Information"
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "dateOfBirth": "Date of Birth",
+      "phone": "Phone Number",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "country": "Country",
+      "currentPosition": "Current Position",
+      "currentCompany": "Current Company",
+      "yearsExperience": "Years of Experience",
+      "educationLevel": "Education Level",
+      "skills": "Skills",
+      "resume": "Resume",
+      "coverLetter": "Cover Letter",
+      "portfolio": "Portfolio",
+      "availableStartDate": "Available Start Date",
+      "salaryExpectation": "Salary Expectation",
+      "status": "Status",
+      "additionalInfo": "Additional Information"
+    },
+    "placeholders": {
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "email": "your.email@example.com",
+      "dateOfBirth": "mm/dd/yyyy",
+      "phone": "123-456-7890",
+      "addressLine1": "123 Main Street",
+      "addressLine2": "Apartment, suite, etc. (optional)",
+      "currentPosition": "e.g., Registered Nurse",
+      "currentCompany": "e.g., General Hospital",
+      "skillInput": "Add a skill (e.g., Patient Care, IV Therapy)",
+      "additionalInfo": "Tell us anything else you'd like us to know..."
+    },
+    "options": {
+      "selectCountry": "Select Country",
+      "selectExperience": "Select experience",
+      "selectEducation": "Select education",
+      "selectSalaryRange": "Select salary range",
+      "selectStatus": "Select your current status"
+    },
+    "experience": {
+      "0-1": "0-1 years",
+      "2-5": "2-5 years",
+      "6-10": "6-10 years",
+      "10+": "10+ years"
+    },
+    "education": {
+      "highSchool": "High School",
+      "associate": "Associate Degree",
+      "bachelor": "Bachelor's Degree",
+      "master": "Master's Degree",
+      "doctorate": "Doctorate"
+    },
+    "status": {
+      "activelyLooking": "Actively Looking",
+      "openToOpportunities": "Open to Opportunities",
+      "passivelyLooking": "Passively Looking",
+      "notLooking": "Not Looking",
+      "employed30": "Employed - Available in 30 days",
+      "employed60": "Employed - Available in 60 days",
+      "employed90": "Employed - Available in 90+ days",
+      "student": "Student/Recent Graduate",
+      "careerChange": "Career Change",
+      "returning": "Returning to Workforce"
+    },
+    "documents": {
+      "resumeDescription": "Upload your most recent resume (PDF, DOC, or DOCX)",
+      "coverLetterDescription": "Optional: Upload a personalized cover letter",
+      "portfolioDescription": "Optional: Upload your portfolio or work samples",
+      "chooseFile": "Choose File",
+      "uploadFile": "Upload a file",
+      "dragDrop": "Drag and drop or click to browse",
+      "resumeFormats": "Supported formats: .pdf, .doc, .docx • Max size: 10MB",
+      "coverLetterFormats": "Supported formats: .pdf, .doc, .docx • Max size: 5MB",
+      "portfolioFormats": "Supported formats: .pdf, .zip, .doc, .docx • Max size: 20MB",
+      "uploadError": "Upload Error",
+      "fileTypeError": "File type must be one of: .pdf, .doc, .docx",
+      "tryAgain": "Try Again"
+    },
+    "buttons": {
+      "submit": "Submit Application",
+      "addSkill": "Add Skill",
+      "removeSkill": "Remove Skill"
+    },
+    "messages": {
+      "requiredFields": "Please fill in all required fields (marked with *) and upload your resume to submit your application.",
+      "secureSubmission": "Your application will be submitted securely and you'll receive a confirmation email.",
+      "submitting": "Submitting...",
+      "success": "Application submitted successfully!",
+      "error": "Failed to submit application. Please try again.",
+      "retryAfter": "Please try again in {seconds} seconds."
+    },
+    "salaryRanges": {
+      "30-40": "$30,000 - $40,000",
+      "40-50": "$40,000 - $50,000",
+      "50-60": "$50,000 - $60,000",
+      "60-70": "$60,000 - $70,000",
+      "70-80": "$70,000 - $80,000",
+      "80-90": "$80,000 - $90,000",
+      "90-100": "$90,000 - $100,000",
+      "100-120": "$100,000 - $120,000",
+      "120-150": "$120,000 - $150,000",
+      "150-200": "$150,000 - $200,000",
+      "200+": "$200,000+"
+    },
+    "validation": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidPhone": "Please enter a valid phone number"
+    }
+  }
+}

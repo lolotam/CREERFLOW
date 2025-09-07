@@ -157,9 +157,9 @@ npm run dev
 
 ### 5. Access the Application
 
-- **Frontend**: [http://localhost:3000](http://localhost:3000)
-- **Admin Panel**: [http://localhost:3000/en/admin](http://localhost:3000/en/admin)
-- **Arabic Version**: [http://localhost:3000/ar](http://localhost:3000/ar)
+- **Frontend**: [http://localhost:4444](http://localhost:4444)
+- **Admin Panel**: [http://localhost:4444/en/admin](http://localhost:4444/en/admin)
+- **Arabic Version**: [http://localhost:4444/ar](http://localhost:4444/ar)
 
 **Default Admin Credentials:**
 - Username: `admin`
@@ -221,7 +221,8 @@ ADMIN_EMAIL=info@careerflow.com
 ADMIN_PHONE=+96555683677
 
 # Application Settings
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=http://localhost:4444
+PORT=4444
 NEXT_PUBLIC_CONTACT_EMAIL=info@careerflow.com
 NEXT_PUBLIC_CONTACT_PHONE=+96555683677
 
@@ -310,12 +311,22 @@ export default getRequestConfig(async ({ locale }) => ({
 
 ### Dashboard Features
 
-- **Job Management** - Create, edit, delete, and feature jobs
-- **Application Tracking** - Review and manage job applications
-- **Featured Jobs Management** - Unlimited featured job control
-- **Analytics Dashboard** - Real-time statistics and insights
-- **Content Management** - Dynamic website content editing
-- **Contact Management** - Handle contact form submissions
+- **Job Management** - Complete CRUD operations with card-based interface, advanced filtering, and import/export
+- **Email Subscriber Management** - Full subscriber lifecycle with preview, delete, and status management
+- **Contact Message Management** - Handle inquiries with preview, status tracking, and response management
+- **Featured Jobs Management** - Unlimited featured job control with star toggle system
+- **Analytics Dashboard** - Real-time statistics and insights with comprehensive metrics
+- **Data Migration Tools** - Automatic sync between JSON and database storage systems
+- **Import/Export Functions** - CSV import/export for bulk operations and data backup
+
+### Recent Fixes & Improvements (September 2025)
+
+- **✅ Email Subscriber Data Retrieval** - Fixed dual storage system issue, migrated 17 missing subscribers from JSON to database
+- **✅ Contact Messages Data Retrieval** - Resolved missing historical messages, migrated 15 messages to ensure complete data access
+- **✅ Job Management Dashboard** - Comprehensive job management system with card-based interface and full CRUD operations
+- **✅ Admin Dashboard Functionality** - All preview, delete, and status management functions fully operational
+- **✅ Database Migration Tools** - Automatic sync between JSON file storage and SQLite database
+- **✅ UI/UX Improvements** - Fixed transparency issues, enhanced status controls, improved visual feedback
 
 ### Admin Access
 
@@ -568,7 +579,7 @@ RUN npm ci --only=production
 COPY . .
 RUN npm run build
 
-EXPOSE 3000
+EXPOSE 4444
 CMD ["npm", "start"]
 ```
 
@@ -673,6 +684,26 @@ NEXT_PUBLIC_CONTACT_PHONE=+96555683677
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔧 Troubleshooting
+
+For comprehensive troubleshooting guide, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+
+### Common Issues & Quick Fixes
+
+- **Database Issues**: Run `npm run db:migrate` to sync dual storage system data
+- **Admin Dashboard Empty**: Check for JSON to database migration needs
+- **API Errors**: Verify environment variables and database connection
+- **Email Subscriber Missing**: Dual storage system issue - run migration scripts
+- **Contact Messages Missing**: Same dual storage pattern - migrate JSON data
+
+### Critical Fixes Applied (September 2025)
+
+- ✅ **Email Subscriber Data Retrieval** - Fixed dual storage system, migrated 17 missing subscribers
+- ✅ **Contact Messages Data Retrieval** - Resolved dual storage system issue, migrated 15 missing messages
+- ✅ **Job Management Dashboard** - Verified complete CRUD operations functionality
+- ✅ **Database Migration Tools** - Automatic sync between JSON and database storage
+- ✅ **Dual Storage System** - Resolved inconsistency between JSON file and database storage
 
 ## 📞 Support
 

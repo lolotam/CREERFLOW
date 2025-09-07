@@ -380,7 +380,7 @@ export default function FeaturedJobsManagement({ onJobUpdate }: FeaturedJobsMana
                 <AlertTriangle className="mx-auto h-12 w-12 text-yellow-400 mb-4" />
                 <h3 className="text-lg font-bold text-white mb-2">Remove from Featured?</h3>
                 <p className="text-gray-400 mb-6">
-                  This will remove the job from the featured list. The job will remain active but won't be highlighted as featured.
+                  This will remove the job from the featured list. The job will remain active but won&apos;t be highlighted as featured.
                 </p>
                 <div className="flex space-x-3">
                   <button

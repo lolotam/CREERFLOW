@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Webhook Integration Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000/en/apply');
+    await page.goto('http://localhost:4444/en/apply');
   });
 
   test('should successfully submit application and test webhook integration', async ({ page }) => {
@@ -117,7 +117,7 @@ startxref 200
 
   test('should validate webhook URL configuration', async ({ page }) => {
     // Test the API endpoint directly
-    const response = await page.request.post('http://localhost:3000/api/submit-webhook', {
+    const response = await page.request.post('http://localhost:4444/api/submit-webhook', {
       data: {
         firstName: 'Test',
         lastName: 'User',

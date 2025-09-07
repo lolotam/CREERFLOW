@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Admin Job Management Investigation - 0 of 0 Jobs Issue', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -127,7 +127,7 @@ test.describe('Admin Job Management Investigation - 0 of 0 Jobs Issue', () => {
     console.log('🔍 CHECKING: Main Jobs API for data availability');
     
     // Test the main jobs API endpoint directly
-    const response = await page.request.get('http://localhost:3000/api/jobs');
+    const response = await page.request.get('http://localhost:4444/api/jobs');
     console.log(`📡 Main Jobs API response status: ${response.status()}`);
     
     if (response.status() === 200) {
@@ -159,7 +159,7 @@ test.describe('Admin Job Management Investigation - 0 of 0 Jobs Issue', () => {
     
     for (const endpoint of adminEndpoints) {
       try {
-        const response = await page.request.get(`http://localhost:3000${endpoint}`);
+        const response = await page.request.get(`http://localhost:4444${endpoint}`);
         console.log(`📡 ${endpoint} response status: ${response.status()}`);
         
         if (response.status() === 200) {

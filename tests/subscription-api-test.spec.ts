@@ -5,7 +5,7 @@ test.describe('Subscription API Tests', () => {
     // Test the subscription API endpoint
     const testEmail = `api-test-${Date.now()}@example.com`;
     
-    const response = await page.request.post('http://localhost:3000/api/subscribe', {
+    const response = await page.request.post('http://localhost:4444/api/subscribe', {
       data: {
         email: testEmail
       }
@@ -23,7 +23,7 @@ test.describe('Subscription API Tests', () => {
 
   test('should test admin subscribers API endpoint', async ({ page }) => {
     // Test the admin subscribers API endpoint
-    const response = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const response = await page.request.get('http://localhost:4444/api/admin/subscribers');
     
     console.log(`📊 Admin API status: ${response.status()}`);
     
@@ -46,7 +46,7 @@ test.describe('Subscription API Tests', () => {
     // First, create a subscription via the API
     const testEmail = `integration-test-${Date.now()}@example.com`;
     
-    const subscribeResponse = await page.request.post('http://localhost:3000/api/subscribe', {
+    const subscribeResponse = await page.request.post('http://localhost:4444/api/subscribe', {
       data: {
         email: testEmail
       }
@@ -59,7 +59,7 @@ test.describe('Subscription API Tests', () => {
     await page.waitForTimeout(1000);
 
     // Then check if it appears in the admin API
-    const adminResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const adminResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     
     if (adminResponse.status() === 200) {
       const adminResult = await adminResponse.json();

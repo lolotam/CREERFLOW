@@ -5,5 +5,5 @@ $body = @{
     message = "Test message"
 } | ConvertTo-Json
 
-$response = Invoke-RestMethod -Uri "http://localhost:3000/api/contact" -Method Post -Body $body -ContentType "application/json"
+$response = Invoke-RestMethod -Uri "http://localhost:4444/api/contact" -Method Post -Body $body -ContentType "application/json"
 Write-Output $response

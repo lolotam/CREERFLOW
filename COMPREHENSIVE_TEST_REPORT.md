@@ -2,7 +2,7 @@
 
 ## 🎯 Test Overview
 **Date**: September 5, 2025  
-**Application URL**: http://localhost:3000  
+**Application URL**: http://localhost:4444  
 **Test Focus**: Application functionality and Job Management modal styling verification  
 **Test Framework**: Playwright with Chromium browser  
 

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hero-title",
+    "title": "Hero Section Title",
+    "type": "hero",
+    "content": "Find healthcare jobs in Kuwait & Gulf"
+  },
+  {
+    "id": "hero-subtitle",
+    "title": "Hero Section Subtitle",
+    "type": "text",
+    "content": "Find the right healthcare job, location, and salary—tailored to you. Upload your CV, get instant matches, apply today.”"
+  },
+  {
+    "id": "hero-cta",
+    "title": "Hero CTA Button Text",
+    "type": "text",
+    "content": "Start Your Journeyy"
+  },
+  {
+    "id": "jobs-header",
+    "title": "Jobs Page Header",
+    "type": "text",
+    "content": "Find Your Dream Job"
+  },
+  {
+    "id": "jobs-subtitle",
+    "title": "Jobs Page Subtitle",
+    "type": "text",
+    "content": "Discover thousands of opportunities from top healthcare employers"
+  },
+  {
+    "id": "about-title",
+    "title": "About Section Title",
+    "type": "text",
+    "content": "About CareerFlow"
+  },
+  {
+    "id": "about-description",
+    "title": "About Section Description",
+    "type": "text",
+    "content": "We are dedicated to connecting talented healthcare professionals with leading employers across the Gulf region."
+  },
+  {
+    "id": "company-stats",
+    "title": "Company Statistics",
+    "type": "stats",
+    "content": "{\"totalJobs\":\"3,500+\",\"companies\":\"150+\",\"successRate\":\"96%\",\"candidates\":\"100,000+\"}"
+  }
+]

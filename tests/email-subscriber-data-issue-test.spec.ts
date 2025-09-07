@@ -6,7 +6,7 @@ test.describe('Email Subscriber Data Retrieval Issue Investigation', () => {
     
     // Step 1: Test subscription process with lolotam@gmail.com
     console.log('📧 Step 1: Testing subscription process...');
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('networkidle');
     
     // Find email subscription form
@@ -39,13 +39,13 @@ test.describe('Email Subscriber Data Retrieval Issue Investigation', () => {
     
     // Step 2: Check admin dashboard for the email
     console.log('\n📊 Step 2: Checking admin dashboard...');
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -105,7 +105,7 @@ test.describe('Email Subscriber Data Retrieval Issue Investigation', () => {
     console.log('🔍 TESTING: Email Subscribers API Direct Access');
     
     // Test the admin email subscribers API endpoint
-    const response = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const response = await page.request.get('http://localhost:4444/api/admin/subscribers');
     console.log(`📡 Admin subscribers API response status: ${response.status()}`);
     
     if (response.status() === 200) {
@@ -143,7 +143,7 @@ test.describe('Email Subscriber Data Retrieval Issue Investigation', () => {
     console.log('🔍 TESTING: Public Subscription API');
     
     // Test subscribing via API to see the response
-    const subscribeResponse = await page.request.post('http://localhost:3000/api/subscribe', {
+    const subscribeResponse = await page.request.post('http://localhost:4444/api/subscribe', {
       data: { email: 'lolotam@gmail.com' }
     });
     

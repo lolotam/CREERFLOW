@@ -190,28 +190,28 @@ test.describe('Comprehensive Documentation Verification', () => {
       {
         name: 'Jobs API',
         test: async () => {
-          const response = await page.request.get('http://localhost:3000/api/jobs');
+          const response = await page.request.get('http://localhost:4444/api/jobs');
           return response.status() === 200;
         }
       },
       {
         name: 'Admin Dashboard Access',
         test: async () => {
-          await page.goto('http://localhost:3000/admin/login');
+          await page.goto('http://localhost:4444/admin/login');
           return page.url().includes('/admin/login');
         }
       },
       {
         name: 'Email Subscribers API',
         test: async () => {
-          const response = await page.request.get('http://localhost:3000/api/admin/subscribers');
+          const response = await page.request.get('http://localhost:4444/api/admin/subscribers');
           return response.status() === 200;
         }
       },
       {
         name: 'Contact Messages API',
         test: async () => {
-          const response = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+          const response = await page.request.get('http://localhost:4444/api/admin/contact-messages');
           return response.status() === 200;
         }
       }

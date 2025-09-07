@@ -5,7 +5,7 @@ test.describe('Job Management Modal Styling - Verification Test', () => {
     console.log('🔍 VERIFICATION: Job Management Modal Styling Implementation');
     
     // Test the API to ensure we have jobs to work with
-    const jobsResponse = await page.request.get('http://localhost:3000/api/jobs?limit=10');
+    const jobsResponse = await page.request.get('http://localhost:4444/api/jobs?limit=10');
     const jobsData = await jobsResponse.json();
     
     console.log(`📊 Jobs available for testing: ${jobsData.data?.length || 0}`);
@@ -20,7 +20,7 @@ test.describe('Job Management Modal Styling - Verification Test', () => {
     console.log('🔍 VERIFICATION: CSS Class Implementation');
     
     // Navigate to a page that loads the CSS
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Check if the glass-modal-admin CSS class is available

@@ -14,7 +14,7 @@ async function testContactAPI() {
     console.log(`📧 Testing with data:`, testData);
     
     // Test contact form submission
-    const contactResponse = await fetch('http://localhost:3000/api/contact', {
+    const contactResponse = await fetch('http://localhost:4444/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ async function testContactAPI() {
       
       // Test admin API
       console.log('\n🔍 Testing admin contact messages API...');
-      const adminResponse = await fetch('http://localhost:3000/api/admin/contact-messages');
+      const adminResponse = await fetch('http://localhost:4444/api/admin/contact-messages');
       const adminResult = await adminResponse.json();
       
       console.log('👨‍💼 Admin API response:', adminResult);

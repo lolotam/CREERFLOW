@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Favicon Implementation Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the homepage
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
   });
 
   test('should have favicon.ico in HTML head', async ({ page }) => {
@@ -47,14 +47,14 @@ test.describe('Favicon Implementation Tests', () => {
     ];
 
     for (const url of faviconUrls) {
-      const response = await page.request.get(`http://localhost:3000${url}`);
+      const response = await page.request.get(`http://localhost:4444${url}`);
       expect(response.status()).toBe(200);
     }
   });
 
   test('should have proper web manifest content', async ({ page }) => {
     // Fetch and validate web manifest
-    const response = await page.request.get('http://localhost:3000/site.webmanifest');
+    const response = await page.request.get('http://localhost:4444/site.webmanifest');
     expect(response.status()).toBe(200);
     
     const manifest = await response.json();

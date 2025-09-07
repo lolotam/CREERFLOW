@@ -2,13 +2,13 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Job API Fix Verification', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('domcontentloaded');
   });
 
   test('should verify jobs API endpoint works after schema fix', async ({ page }) => {
     // Test the jobs API endpoint directly
-    const response = await page.request.get('http://localhost:3000/api/jobs');
+    const response = await page.request.get('http://localhost:4444/api/jobs');
     
     console.log(`Jobs API response status: ${response.status()}`);
     
@@ -35,7 +35,7 @@ test.describe('Job API Fix Verification', () => {
 
   test('should verify jobs API with status filter works', async ({ page }) => {
     // Test the jobs API with status filter (this was causing the original error)
-    const response = await page.request.get('http://localhost:3000/api/jobs?status=active');
+    const response = await page.request.get('http://localhost:4444/api/jobs?status=active');
     
     console.log(`Jobs API with status filter response: ${response.status()}`);
     
@@ -54,7 +54,7 @@ test.describe('Job API Fix Verification', () => {
 
   test('should verify featured jobs API works', async ({ page }) => {
     // Test the featured jobs endpoint that was also failing
-    const response = await page.request.get('http://localhost:3000/api/jobs?featured=true&status=active&limit=15');
+    const response = await page.request.get('http://localhost:4444/api/jobs?featured=true&status=active&limit=15');
     
     console.log(`Featured jobs API response: ${response.status()}`);
     
@@ -85,7 +85,7 @@ test.describe('Job API Fix Verification', () => {
     });
     
     // Load the homepage which tries to fetch featured jobs
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('networkidle');
     
     // Take screenshot to verify page loads correctly

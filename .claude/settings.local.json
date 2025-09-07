@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(next dev:*)",
+      "Bash(npx next:*)",
+      "Bash(npm run lint)",
+      "Bash(sqlite3:*)",
+      "Bash(node:*)",
+      "Bash(start \"http://localhost:3006/en/jobs?category=administration\")",
+      "Bash(start \"http://localhost:3005/en/jobs?category=administration\")",
+      "Bash(start http://localhost:4444)",
+      "mcp__byterover-mcp__byterover-retrieve-knowledge",
+      "mcp__thinking-mcp__sequentialthinking",
+      "mcp__filesystem-mcp__list_directory",
+      "mcp__filesystem-mcp__directory_tree",
+      "mcp__filesystem-mcp__read_text_file",
+      "mcp__filesystem-mcp__search_files",
+      "mcp__filesystem-mcp__edit_file",
+      "mcp__byterover-mcp__byterover-store-knowledge"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

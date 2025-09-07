@@ -1,0 +1,142 @@
+[
+  {
+    "id": "newsletter-1755373721864-8wy0pk6ry",
+    "email": "test@example.com",
+    "subscribedAt": "2025-08-16T19:48:41.864Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1755373898462-fizs2k7dx",
+    "email": "valid@example.com",
+    "subscribedAt": "2025-08-16T19:51:38.462Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1755373972693-5yxc1g680",
+    "email": "lolotam@gmail.com",
+    "subscribedAt": "2025-08-16T19:52:52.693Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::ffff:127.0.0.1"
+  },
+  {
+    "id": "newsletter-1756924040013-qyxkusfsy",
+    "email": "dr.vet.waleedtam@gmail.com",
+    "subscribedAt": "2025-09-03T18:27:20.013Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1756975911550-q22tvypab",
+    "email": "waleedtam@gmail.com",
+    "subscribedAt": "2025-09-04T08:51:51.550Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757002014467-3mnt4yjtm",
+    "email": "mohamedwaleed@gmail.com",
+    "subscribedAt": "2025-09-04T16:06:54.467Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006378890-qzadll6md",
+    "email": "test-1757006375206@example.com",
+    "subscribedAt": "2025-09-04T17:19:38.890Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006378917-qwivaw959",
+    "email": "admin-test-1757006375012@example.com",
+    "subscribedAt": "2025-09-04T17:19:38.917Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006789145-1eyx1rsyy",
+    "email": "api-test-1757006788727@example.com",
+    "subscribedAt": "2025-09-04T17:26:29.145Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006789199-kjvec89jy",
+    "email": "integration-test-1757006788800@example.com",
+    "subscribedAt": "2025-09-04T17:26:29.199Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006792895-85oap8vrs",
+    "email": "api-test-1757006792762@example.com",
+    "subscribedAt": "2025-09-04T17:26:32.895Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757006795151-jjxuhuqo9",
+    "email": "integration-test-1757006795060@example.com",
+    "subscribedAt": "2025-09-04T17:26:35.151Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007106684-7wfngb0vh",
+    "email": "api-direct-test-1757007105357@example.com",
+    "subscribedAt": "2025-09-04T17:31:46.684Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007107151-6nhhfdkxm",
+    "email": "api-direct-test-1757007105607@example.com",
+    "subscribedAt": "2025-09-04T17:31:47.151Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007109619-c0mn5jskw",
+    "email": "api-direct-test-1757007109221@example.com",
+    "subscribedAt": "2025-09-04T17:31:49.619Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0.2) Gecko/20100101 Firefox/140.0.2",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007111407-vobtalas0",
+    "email": "flow-test-1757007105255@example.com",
+    "subscribedAt": "2025-09-04T17:31:51.407Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.7258.5 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007467853-ulvq9t3jw",
+    "email": "test-fixed@example.com",
+    "subscribedAt": "2025-09-04T17:37:47.853Z",
+    "userAgent": "node",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757007602542-vltdzotxk",
+    "email": "test-new-1757007602431@example.com",
+    "subscribedAt": "2025-09-04T17:40:02.542Z",
+    "userAgent": "node",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757010278366-n3awjb63i",
+    "email": "ddddddddddddddd@gmail.com",
+    "subscribedAt": "2025-09-04T18:24:38.366Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  },
+  {
+    "id": "newsletter-1757012075559-ihrh94ybs",
+    "email": "mylovlywife@gmail.com",
+    "subscribedAt": "2025-09-04T18:54:35.559Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+    "ipAddress": "::1"
+  }
+]

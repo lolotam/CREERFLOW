@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Contact Messages Status Slider Functionality', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -185,7 +185,7 @@ test.describe('Contact Messages Status Slider Functionality', () => {
     console.log('🔍 TESTING: Contact Messages API Status Update');
     
     // Test the API directly
-    const response = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const response = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const responseData = await response.json();
     
     console.log(`📡 API Response Status: ${response.status()}`);
@@ -200,7 +200,7 @@ test.describe('Contact Messages Status Slider Functionality', () => {
       console.log(`📧 First message ID: ${firstMessage.id}`);
       
       // Test status update API
-      const updateResponse = await page.request.put('http://localhost:3000/api/admin/contact-messages', {
+      const updateResponse = await page.request.put('http://localhost:4444/api/admin/contact-messages', {
         data: {
           id: firstMessage.id,
           status: 'read'
@@ -215,7 +215,7 @@ test.describe('Contact Messages Status Slider Functionality', () => {
       expect(updateResult.success).toBe(true);
       
       // Verify the status was updated
-      const verifyResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+      const verifyResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
       const verifyData = await verifyResponse.json();
       
       if (verifyData.success && verifyData.data?.messages?.length > 0) {

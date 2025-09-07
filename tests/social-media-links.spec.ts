@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Social Media Links Implementation', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the homepage
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(2000); // Give time for components to load
   });
@@ -99,7 +99,7 @@ test.describe('Social Media Links Implementation', () => {
 
   test('should display social media icons on different pages', async ({ page }) => {
     // Test on jobs page
-    await page.goto('http://localhost:3000/jobs');
+    await page.goto('http://localhost:4444/jobs');
     await page.waitForLoadState('networkidle');
     await page.locator('footer').scrollIntoViewIfNeeded();
     
@@ -107,7 +107,7 @@ test.describe('Social Media Links Implementation', () => {
     await expect(page.locator('a[aria-label="Facebook"]')).toBeVisible();
     
     // Test on contact page
-    await page.goto('http://localhost:3000/contact');
+    await page.goto('http://localhost:4444/contact');
     await page.waitForLoadState('networkidle');
     await page.locator('footer').scrollIntoViewIfNeeded();
     

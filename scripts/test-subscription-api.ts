@@ -8,7 +8,7 @@ async function testSubscriptionAPI() {
     console.log(`📧 Testing with email: ${testEmail}`);
 
     // Test subscription
-    const subscribeResponse = await fetch('http://localhost:3000/api/subscribe', {
+    const subscribeResponse = await fetch('http://localhost:4444/api/subscribe', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ async function testSubscriptionAPI() {
       
       // Test admin API
       console.log('\n🔍 Testing admin API...');
-      const adminResponse = await fetch('http://localhost:3000/api/admin/subscribers');
+      const adminResponse = await fetch('http://localhost:4444/api/admin/subscribers');
       const adminResult = await adminResponse.json();
       
       console.log('👨‍💼 Admin API response:', adminResult);

@@ -1,0 +1,20 @@
+John Doe
+Software Engineer
+Email: john.doe@example.com
+Phone: +1 555-123-4567
+
+EXPERIENCE:
+- 3 years of software development experience
+- Proficient in JavaScript, React, Node.js
+- Experience with database design and management
+
+EDUCATION:
+- Bachelor's Degree in Computer Science
+- University of Technology, 2021
+
+SKILLS:
+- JavaScript
+- React
+- Node.js
+- Database Management
+- Problem Solving

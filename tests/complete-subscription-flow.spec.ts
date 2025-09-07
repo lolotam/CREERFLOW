@@ -5,7 +5,7 @@ test.describe('Complete Email Subscription Flow', () => {
     const testEmail = `flow-test-${Date.now()}@example.com`;
     
     // Step 1: Navigate to homepage
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('networkidle');
     
     // Step 2: Find and fill the newsletter subscription form in footer
@@ -34,7 +34,7 @@ test.describe('Complete Email Subscription Flow', () => {
     console.log(`✅ Step 1 Complete: Subscription submitted for ${testEmail}`);
     
     // Step 4: Verify subscription was saved via API
-    const subscriptionResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const subscriptionResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     expect(subscriptionResponse.status()).toBe(200);
     
     const subscriptionData = await subscriptionResponse.json();
@@ -53,12 +53,12 @@ test.describe('Complete Email Subscription Flow', () => {
     }
     
     // Step 5: Navigate to admin dashboard and verify subscription appears
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     
     // Login with admin credentials
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await expect(page.locator('text=Admin Dashboard')).toBeVisible({ timeout: 15000 });
@@ -92,7 +92,7 @@ test.describe('Complete Email Subscription Flow', () => {
     const testEmail = `api-direct-test-${Date.now()}@example.com`;
     
     // Test direct API subscription
-    const subscribeResponse = await page.request.post('http://localhost:3000/api/subscribe', {
+    const subscribeResponse = await page.request.post('http://localhost:4444/api/subscribe', {
       data: { email: testEmail }
     });
     
@@ -107,7 +107,7 @@ test.describe('Complete Email Subscription Flow', () => {
     await page.waitForTimeout(2000);
     
     // Test admin API retrieval
-    const adminResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const adminResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     expect(adminResponse.status()).toBe(200);
     
     const adminResult = await adminResponse.json();

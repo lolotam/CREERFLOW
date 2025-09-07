@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Contact Messages Data Retrieval Issue Investigation', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -79,7 +79,7 @@ test.describe('Contact Messages Data Retrieval Issue Investigation', () => {
     console.log('🔍 TESTING: Contact Messages API Direct Access');
     
     // Test the admin contact messages API endpoint
-    const response = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const response = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     console.log(`📡 Admin contact messages API response status: ${response.status()}`);
     
     if (response.status() === 200) {
@@ -121,7 +121,7 @@ test.describe('Contact Messages Data Retrieval Issue Investigation', () => {
     
     // Submit a test contact message via the public API
     console.log('📝 Submitting test contact message...');
-    const submitResponse = await page.request.post('http://localhost:3000/api/contact', {
+    const submitResponse = await page.request.post('http://localhost:4444/api/contact', {
       data: testMessage
     });
     
@@ -135,7 +135,7 @@ test.describe('Contact Messages Data Retrieval Issue Investigation', () => {
       await page.waitForTimeout(2000);
       
       // Now check if it appears in the admin API
-      const adminResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+      const adminResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
       
       if (adminResponse.status() === 200) {
         const adminData = await adminResponse.json();

@@ -1,0 +1,47 @@
+[
+  {
+    "page": "home",
+    "pageName": "Home Page",
+    "desktop": "linear-gradient(to right, #000000, #1a1a1a)",
+    "tablet": "linear-gradient(to right, #000000, #1a1a1a)",
+    "mobile": "linear-gradient(to bottom, #000000, #1a1a1a)",
+    "type": "gradient",
+    "direction": "to right"
+  },
+  {
+    "page": "jobs",
+    "pageName": "Jobs Page",
+    "desktop": "linear-gradient(135deg, #000000 0%, #1e1e1e 100%)",
+    "tablet": "linear-gradient(135deg, #000000 0%, #1e1e1e 100%)",
+    "mobile": "linear-gradient(to bottom, #000000 0%, #1e1e1e 100%)",
+    "type": "gradient",
+    "direction": "to right"
+  },
+  {
+    "page": "favorites",
+    "pageName": "Favorites Page",
+    "desktop": "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
+    "tablet": "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
+    "mobile": "linear-gradient(to bottom, #1a1a1a 0%, #2d2d2d 100%)",
+    "type": "gradient",
+    "direction": "to right"
+  },
+  {
+    "page": "contact",
+    "pageName": "Contact Page",
+    "desktop": "linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 100%)",
+    "tablet": "linear-gradient(135deg, #0a0a0a 0%, #1f1f1f 100%)",
+    "mobile": "linear-gradient(to bottom, #0a0a0a 0%, #1f1f1f 100%)",
+    "type": "gradient",
+    "direction": "to right"
+  },
+  {
+    "page": "admin",
+    "pageName": "Admin Dashboard",
+    "desktop": "linear-gradient(135deg, #111827 0%, #1f2937 100%)",
+    "tablet": "linear-gradient(135deg, #111827 0%, #1f2937 100%)",
+    "mobile": "linear-gradient(to bottom, #111827 0%, #1f2937 100%)",
+    "type": "gradient",
+    "direction": "to right"
+  }
+]

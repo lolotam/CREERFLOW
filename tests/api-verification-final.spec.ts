@@ -6,7 +6,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     
     // Test Jobs API (Enhanced with 105+ jobs)
     console.log('📊 Testing Jobs API...');
-    const jobsResponse = await page.request.get('http://localhost:3000/api/jobs?limit=200');
+    const jobsResponse = await page.request.get('http://localhost:4444/api/jobs?limit=200');
     const jobsData = await jobsResponse.json();
     
     console.log(`📡 Jobs API Status: ${jobsResponse.status()}`);
@@ -20,7 +20,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     
     // Test Email Subscribers API (Fixed data retrieval)
     console.log('📧 Testing Email Subscribers API...');
-    const subscribersResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const subscribersResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     const subscribersData = await subscribersResponse.json();
     
     console.log(`📡 Subscribers API Status: ${subscribersResponse.status()}`);
@@ -34,7 +34,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     
     // Test Contact Messages API (Fixed data retrieval)
     console.log('📧 Testing Contact Messages API...');
-    const messagesResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const messagesResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const messagesData = await messagesResponse.json();
     
     console.log(`📡 Messages API Status: ${messagesResponse.status()}`);
@@ -55,7 +55,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     // Verify specific data that was migrated/fixed
     
     // Check for lolotam@gmail.com in subscribers (was missing before fix)
-    const subscribersResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const subscribersResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     const subscribersData = await subscribersResponse.json();
     
     if (subscribersData.success && subscribersData.data?.subscribers) {
@@ -73,7 +73,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     }
     
     // Check for lolotam@gmail.com in contact messages (was missing before fix)
-    const messagesResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const messagesResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const messagesData = await messagesResponse.json();
     
     if (messagesData.success && messagesData.data?.messages) {
@@ -91,7 +91,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     }
     
     // Verify job data migration (should have jobs with different ID patterns)
-    const jobsResponse = await page.request.get('http://localhost:3000/api/jobs?limit=200');
+    const jobsResponse = await page.request.get('http://localhost:4444/api/jobs?limit=200');
     const jobsData = await jobsResponse.json();
     
     if (jobsData.success && jobsData.data) {
@@ -117,7 +117,7 @@ test.describe('Final API Verification - All Enhancements', () => {
     console.log('🔍 VERIFICATION: CRUD Operations Functionality');
     
     // Test Contact Message Status Update (CRUD operation)
-    const messagesResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const messagesResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const messagesData = await messagesResponse.json();
     
     if (messagesData.success && messagesData.data?.messages?.length > 0) {
@@ -128,7 +128,7 @@ test.describe('Final API Verification - All Enhancements', () => {
       console.log(`🔄 Testing status update: ${originalStatus} → ${newStatus}`);
       
       // Update status
-      const updateResponse = await page.request.put('http://localhost:3000/api/admin/contact-messages', {
+      const updateResponse = await page.request.put('http://localhost:4444/api/admin/contact-messages', {
         data: {
           id: testMessage.id,
           status: newStatus
@@ -143,7 +143,7 @@ test.describe('Final API Verification - All Enhancements', () => {
       expect(updateResult.success).toBe(true);
       
       // Verify the update
-      const verifyResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+      const verifyResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
       const verifyData = await verifyResponse.json();
       
       if (verifyData.success && verifyData.data?.messages) {

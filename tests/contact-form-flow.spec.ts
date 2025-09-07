@@ -12,7 +12,7 @@ test.describe('Contact Form Flow Tests', () => {
     console.log(`📧 Testing with data:`, testData);
     
     // Step 1: Navigate to contact page
-    await page.goto('http://localhost:3000/contact');
+    await page.goto('http://localhost:4444/contact');
     await page.waitForLoadState('networkidle');
     
     // Step 2: Fill out the contact form
@@ -29,7 +29,7 @@ test.describe('Contact Form Flow Tests', () => {
     console.log(`✅ Step 1 Complete: Contact form submitted for ${testData.email}`);
     
     // Step 5: Verify message was saved via API
-    const contactResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const contactResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     expect(contactResponse.status()).toBe(200);
     
     const contactData = await contactResponse.json();
@@ -49,12 +49,12 @@ test.describe('Contact Form Flow Tests', () => {
     }
     
     // Step 6: Navigate to admin dashboard and verify message appears
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     
     // Login with admin credentials
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await expect(page.locator('text=Admin Dashboard')).toBeVisible({ timeout: 15000 });
@@ -93,7 +93,7 @@ test.describe('Contact Form Flow Tests', () => {
     };
     
     // Test direct API contact submission
-    const contactResponse = await page.request.post('http://localhost:3000/api/contact', {
+    const contactResponse = await page.request.post('http://localhost:4444/api/contact', {
       data: testData
     });
     
@@ -108,7 +108,7 @@ test.describe('Contact Form Flow Tests', () => {
     await page.waitForTimeout(2000);
     
     // Test admin API retrieval
-    const adminResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const adminResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     expect(adminResponse.status()).toBe(200);
     
     const adminResult = await adminResponse.json();

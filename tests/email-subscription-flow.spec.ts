@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Email Subscription Flow Tests', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
   });
 
   test('should submit email subscription from footer form', async ({ page }) => {
@@ -38,12 +38,12 @@ test.describe('Email Subscription Flow Tests', () => {
     await expect(page.locator('text=Thank you for subscribing')).toBeVisible({ timeout: 10000 });
     
     // Now navigate to admin dashboard
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     
     // Login with admin credentials
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await expect(page.locator('text=Admin Dashboard')).toBeVisible({ timeout: 10000 });
@@ -59,7 +59,7 @@ test.describe('Email Subscription Flow Tests', () => {
 
   test('should check API endpoints for subscription data', async ({ page }) => {
     // Test the JSON-based subscription endpoint
-    const jsonResponse = await page.request.get('http://localhost:3000/data/subscriptions.json');
+    const jsonResponse = await page.request.get('http://localhost:4444/data/subscriptions.json');
     expect(jsonResponse.status()).toBe(200);
     
     const jsonData = await jsonResponse.json();
@@ -67,7 +67,7 @@ test.describe('Email Subscription Flow Tests', () => {
     console.log(`✅ JSON subscriptions found: ${jsonData.length}`);
     
     // Test the database-based admin endpoint
-    const dbResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const dbResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     console.log(`Database API status: ${dbResponse.status()}`);
     
     if (dbResponse.status() === 200) {

@@ -132,7 +132,7 @@ async function main(): Promise<void> {
     console.log('\n🎉 Database setup completed successfully!');
     console.log('\n📝 Next Steps:');
     console.log('  1. Start the development server: npm run dev');
-    console.log('  2. Visit http://localhost:3000 to test the application');
+    console.log('  2. Visit http://localhost:4444 to test the application');
     console.log('  3. Admin login: username="admin", password="@Ww55683677wW@"');
     console.log('  4. Contact: info@careerflow.com, +96555683677');
 

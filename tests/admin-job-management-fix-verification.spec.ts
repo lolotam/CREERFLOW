@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Admin Job Management Fix Verification', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -20,7 +20,7 @@ test.describe('Admin Job Management Fix Verification', () => {
     console.log('🔍 VERIFICATION: Jobs API Data Availability');
     
     // Test the main jobs API endpoint
-    const response = await page.request.get('http://localhost:3000/api/jobs');
+    const response = await page.request.get('http://localhost:4444/api/jobs');
     console.log(`📡 Jobs API response status: ${response.status()}`);
     
     expect(response.status()).toBe(200);
@@ -56,7 +56,7 @@ test.describe('Admin Job Management Fix Verification', () => {
     console.log('🔍 VERIFICATION: Homepage Job Display');
     
     // Navigate to homepage
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:4444');
     await page.waitForLoadState('networkidle');
     
     // Look for job-related content
@@ -126,7 +126,7 @@ test.describe('Admin Job Management Fix Verification', () => {
     console.log('🔍 VERIFICATION: Featured Jobs API');
     
     // Test featured jobs endpoint
-    const response = await page.request.get('http://localhost:3000/api/jobs?featured=true&status=active&limit=15');
+    const response = await page.request.get('http://localhost:4444/api/jobs?featured=true&status=active&limit=15');
     console.log(`📡 Featured jobs API response status: ${response.status()}`);
     
     expect(response.status()).toBe(200);

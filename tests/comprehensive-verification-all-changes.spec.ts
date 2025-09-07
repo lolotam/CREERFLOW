@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Comprehensive Verification - All Changes and Enhancements', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -145,7 +145,7 @@ test.describe('Comprehensive Verification - All Changes and Enhancements', () =>
     console.log('🔍 VERIFICATION: API Endpoints Functionality');
     
     // Test Jobs API
-    const jobsResponse = await page.request.get('http://localhost:3000/api/jobs?limit=200');
+    const jobsResponse = await page.request.get('http://localhost:4444/api/jobs?limit=200');
     const jobsData = await jobsResponse.json();
     
     console.log(`📡 Jobs API Status: ${jobsResponse.status()}`);
@@ -156,7 +156,7 @@ test.describe('Comprehensive Verification - All Changes and Enhancements', () =>
     expect(jobsData.data?.length).toBeGreaterThan(50);
     
     // Test Email Subscribers API
-    const subscribersResponse = await page.request.get('http://localhost:3000/api/admin/subscribers');
+    const subscribersResponse = await page.request.get('http://localhost:4444/api/admin/subscribers');
     const subscribersData = await subscribersResponse.json();
     
     console.log(`📡 Subscribers API Status: ${subscribersResponse.status()}`);
@@ -167,7 +167,7 @@ test.describe('Comprehensive Verification - All Changes and Enhancements', () =>
     expect(subscribersData.data?.subscribers?.length).toBeGreaterThan(15);
     
     // Test Contact Messages API
-    const messagesResponse = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const messagesResponse = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const messagesData = await messagesResponse.json();
     
     console.log(`📡 Messages API Status: ${messagesResponse.status()}`);

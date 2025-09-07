@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Contact Messages Data Retrieval Fix Verification', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:3000/admin/login');
+    await page.goto('http://localhost:4444/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard
     await page.fill('input[name="username"]', 'admin');
     await page.fill('input[name="password"]', '@Ww55683677wW@');
-    await page.click('button[type="submit"]');
+    await page.getByRole('button', { name: 'Sign In' }).click();
     
     // Wait for dashboard to load
     await page.waitForURL('**/admin/dashboard');
@@ -93,7 +93,7 @@ test.describe('Contact Messages Data Retrieval Fix Verification', () => {
     console.log('🔍 VERIFICATION: Admin API Returns All Contact Messages');
     
     // Test the admin contact messages API endpoint
-    const response = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const response = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     console.log(`📡 Admin contact messages API response status: ${response.status()}`);
     
     expect(response.status()).toBe(200);
@@ -138,7 +138,7 @@ test.describe('Contact Messages Data Retrieval Fix Verification', () => {
     console.log('🔍 VERIFICATION: Historical Contact Messages');
     
     // Test the admin API
-    const response = await page.request.get('http://localhost:3000/api/admin/contact-messages');
+    const response = await page.request.get('http://localhost:4444/api/admin/contact-messages');
     const data = await response.json();
     
     // Check for historical messages (from August 2025)
