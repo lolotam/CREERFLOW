@@ -71,7 +71,7 @@ function jsonToCSV(jobs: Job[]): string {
     job.posted || '',
     job.status || 'active',
     job.applicants || 0,
-    job.featured ? 'Yes' : 'No',
+    (job.featured ?? false) ? 'Yes' : 'No',
     job.createdAt ? new Date(job.createdAt).toLocaleDateString() : '',
     job.updatedAt ? new Date(job.updatedAt).toLocaleDateString() : ''
   ]);
@@ -93,7 +93,7 @@ function csvToJSON(csvContent: string): Job[] {
     if (values.length !== headers.length) continue;
 
     const job: Job = {
-      id: values[0] || `job-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: values[0] || `job-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`,
       title: values[1]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
       company: values[2]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
       location: values[3]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
@@ -103,11 +103,11 @@ function csvToJSON(csvContent: string): Job[] {
       category: values[7] || 'medical',
       experience: values[8] || 'mid',
       description: values[9]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      requirements: values[10]?.replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(req => req.trim()) || [],
-      benefits: values[11]?.replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(ben => ben.trim()) || [],
+      requirements: values[10] ? values[10].replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(req => req.trim()) : [],
+      benefits: values[11] ? values[11].replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(ben => ben.trim()) : [],
       posted: values[12] || 'Just posted',
       status: (values[13] as 'active' | 'paused' | 'closed') || 'active',
-      applicants: parseInt(values[14]) || 0,
+      applicants: values[14] ? parseInt(values[14]) || 0 : 0,
       featured: values[15] === 'Yes',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
