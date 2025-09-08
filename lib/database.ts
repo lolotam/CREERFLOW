@@ -236,10 +236,13 @@ export async function getAllEmailSubscribers(filters?: {
   page?: number;
   limit?: number;
 }): Promise<{ subscribers: EmailSubscriber[]; total: number }> {
-  const database = await getDatabase();
-  if (!database) return { subscribers: [], total: 0 };
-
   try {
+    const database = await getDatabase();
+    if (!database) {
+      console.error('Database connection not available');
+      return { subscribers: [], total: 0 };
+    }
+
     const page = filters?.page || 1;
     const limit = filters?.limit || 20;
     const offset = (page - 1) * limit;
@@ -257,29 +260,46 @@ export async function getAllEmailSubscribers(filters?: {
       params.push(filters.status);
     }
 
-    // Get total count
-    const countResult = await database.get(`SELECT COUNT(*) as count FROM email_subscribers${whereClause}`, ...params) as { count: number };
-    const total = countResult.count;
+    // Get total count with better error handling
+    const countResult = await database.get(
+      `SELECT COUNT(*) as count FROM email_subscribers${whereClause}`, 
+      ...params
+    ) as { count: number };
+    
+    if (!countResult) {
+      console.error('Failed to get subscriber count');
+      return { subscribers: [], total: 0 };
+    }
+    
+    const total = countResult.count || 0;
 
-    // Get paginated results
+    // Get paginated results with better error handling
     const subscribers = await database.all(`
       SELECT * FROM email_subscribers${whereClause}
       ORDER BY subscription_date DESC
       LIMIT ? OFFSET ?
     `, ...params, limit, offset) as EmailSubscriber[];
 
-    return { subscribers, total };
+    return { 
+      subscribers: subscribers || [], 
+      total 
+    };
   } catch (error) {
     console.error('Error getting email subscribers:', error);
+    // Return empty results instead of throwing to prevent API crashes
     return { subscribers: [], total: 0 };
   }
 }
 
 export async function updateEmailSubscriberStatus(id: number, status: string): Promise<boolean> {
-  if (!db) return false;
-
   try {
-    const stmt = await db.prepare(`
+    const database = await getDatabase();
+    if (!database) {
+      console.error('Database connection not available');
+      return false;
+    }
+
+    const stmt = await database.prepare(`
       UPDATE email_subscribers
       SET status = ?, updated_at = CURRENT_TIMESTAMP
       WHERE id = ?
@@ -294,10 +314,14 @@ export async function updateEmailSubscriberStatus(id: number, status: string): P
 }
 
 export async function deleteEmailSubscriber(id: number): Promise<boolean> {
-  if (!db) return false;
-
   try {
-    const stmt = await db.prepare('DELETE FROM email_subscribers WHERE id = ?');
+    const database = await getDatabase();
+    if (!database) {
+      console.error('Database connection not available');
+      return false;
+    }
+
+    const stmt = await database.prepare('DELETE FROM email_subscribers WHERE id = ?');
     const result = await stmt.run(id);
     return result.changes ? result.changes > 0 : false;
   } catch (error) {
