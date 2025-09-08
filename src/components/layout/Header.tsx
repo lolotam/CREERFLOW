@@ -55,7 +55,7 @@ export default function Header() {
                 whileTap={{ y: 0 }}
               >
                 <Link
-                  href={item.href}
+                  href={item.href as any}
                   className={`relative px-6 py-3 text-lg font-bold rounded-full transition-all duration-300 ${
                     pathname === item.href
                       ? 'text-black'
@@ -78,7 +78,7 @@ export default function Header() {
               className="relative"
             >
               <Link
-                href="/favorites"
+                href={"/favorites" as any}
                 className="p-3 rounded-full bg-white bg-opacity-10 text-gray-400 hover:text-white hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center"
                 title={t('favorites')}
               >
@@ -101,7 +101,7 @@ export default function Header() {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href="/apply"
+                href={"/apply" as any}
                 className="btn-primary px-6 py-2"
               >
                 {t('apply')}
@@ -118,7 +118,7 @@ export default function Header() {
               className="relative"
             >
               <Link
-                href="/favorites"
+                href={"/favorites" as any}
                 className="p-2 rounded-lg bg-white bg-opacity-10 text-gray-400 hover:text-white hover:bg-opacity-20 transition-colors flex items-center justify-center"
                 title="My Favorites"
               >
@@ -161,7 +161,7 @@ export default function Header() {
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={item.href as any}
                     className={`px-6 py-3 text-lg font-bold rounded-full transition-all duration-300 ${
                       pathname === item.href
                         ? 'text-black'
@@ -174,7 +174,7 @@ export default function Header() {
                   </Link>
                 ))}
                 <Link
-                  href="/apply"
+                  href={"/apply" as any}
                   className="btn-primary px-6 py-2 text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >

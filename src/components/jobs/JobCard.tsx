@@ -156,7 +156,7 @@ export default function JobCard({ job, index }: JobCardProps) {
 
               {/* Apply Button */}
               <Link
-                href={`/apply?job=${job.id}`}
+                href={`/apply?job=${job.id}` as any}
                 onClick={(e) => e.stopPropagation()}
                 className="block w-full"
               >
@@ -233,7 +233,7 @@ export default function JobCard({ job, index }: JobCardProps) {
             {/* Footer Actions */}
             <div className="flex space-x-2 rtl:space-x-reverse mt-4">
               <Link
-                href={`/apply?job=${job.id}`}
+                href={`/apply?job=${job.id}` as any}
                 onClick={(e) => e.stopPropagation()}
                 className="flex-1"
               >

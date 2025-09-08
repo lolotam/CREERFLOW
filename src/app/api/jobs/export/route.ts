@@ -1,32 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
+// File imports removed since we're using database models directly
 import { jobModel } from '@/lib/models';
+import type { Job } from '@/lib/models';
 
 // Force Node.js runtime for better-sqlite3 compatibility
 export const runtime = 'nodejs';
 
-interface Job {
-  id: string;
-  title?: string;
-  company?: string;
-  location?: string;
-  country?: string;
-  salary?: string;
-  type?: 'full-time' | 'part-time' | 'contract';
-  category?: string;
-  experience?: string;
-  description?: string;
-  requirements?: string[];
-  benefits?: string[];
-  posted?: string;
-  status?: 'active' | 'paused' | 'closed';
-  applicants?: number;
-  featured?: boolean;
-  createdAt?: string;
-  updatedAt?: string;
-}
+// Job interface imported from models/types.ts
 
 // Convert JSON data to CSV format
 function jsonToCSV(jobs: Job[]): string {
@@ -66,14 +46,14 @@ function jsonToCSV(jobs: Job[]): string {
     job.category || '',
     job.experience || '',
     `"${(job.description || '').replace(/"/g, '""')}"`,
-    `"${(job.requirements || []).join('; ').replace(/"/g, '""')}"`,
-    `"${(job.benefits || []).join('; ').replace(/"/g, '""')}"`,
+    `"${Array.isArray(job.requirements) ? job.requirements.join('; ').replace(/"/g, '""') : (job.requirements ? String(job.requirements).replace(/"/g, '""') : '')}"`,
+    `"${Array.isArray(job.benefits) ? job.benefits.join('; ').replace(/"/g, '""') : (job.benefits ? String(job.benefits).replace(/"/g, '""') : '')}"`,
     job.posted || '',
     job.status || 'active',
-    job.applicants || 0,
+    (job as any).applicants_count || 0,
     (job.featured ?? false) ? 'Yes' : 'No',
-    job.createdAt ? new Date(job.createdAt).toLocaleDateString() : '',
-    job.updatedAt ? new Date(job.updatedAt).toLocaleDateString() : ''
+    (job as any).created_at ? new Date((job as any).created_at).toLocaleDateString() : '',
+    (job as any).updated_at ? new Date((job as any).updated_at).toLocaleDateString() : ''
   ]);
 
   // Combine headers and rows
@@ -92,28 +72,29 @@ function csvToJSON(csvContent: string): Job[] {
     const values = parseCSVLine(lines[i]);
     if (values.length !== headers.length) continue;
 
-    const job: Job = {
-      id: values[0] || `job-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`,
-      title: values[1]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      company: values[2]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      location: values[3]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      country: values[4] || '',
-      salary: values[5]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      type: (values[6] as 'full-time' | 'part-time' | 'contract') || 'full-time',
-      category: values[7] || 'medical',
-      experience: values[8] || 'mid',
-      description: values[9]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
-      requirements: values[10] ? values[10].replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(req => req.trim()) : [],
-      benefits: values[11] ? values[11].replace(/^"|"$/g, '').replace(/""/g, '"').split('; ').filter(ben => ben.trim()) : [],
-      posted: values[12] || 'Just posted',
-      status: (values[13] as 'active' | 'paused' | 'closed') || 'active',
-      applicants: values[14] ? parseInt(values[14]) || 0 : 0,
-      featured: values[15] === 'Yes',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
-
-    jobs.push(job);
+    // Use jobModel.create instead of creating Job objects directly
+    try {
+      const newJob = jobModel.create({
+        title: values[1]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
+        company: values[2]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
+        location: values[3]?.replace(/^"|"$/g, '').replace(/""/g, '"') || '',
+        country: values[4] || '',
+        salary: values[5] ? values[5].replace(/^"|"$/g, '').replace(/""/g, '"') : undefined,
+        type: (values[6] as 'full-time' | 'part-time' | 'contract') || 'full-time',
+        category: values[7] || undefined,
+        experience: values[8] || undefined,
+        description: values[9] ? values[9].replace(/^"|"$/g, '').replace(/""/g, '"') : undefined,
+        requirements: values[10] ? values[10].replace(/^"|"$/g, '').replace(/""/g, '"').split(';').map(s => s.trim()).filter(s => s) : undefined,
+        benefits: values[11] ? values[11].replace(/^"|"$/g, '').replace(/""/g, '"').split(';').map(s => s.trim()).filter(s => s) : undefined,
+        posted: values[12] || undefined,
+        status: (values[13] as 'active' | 'paused' | 'closed') || 'active',
+        featured: values[15] === 'Yes',
+        match_percentage: undefined
+      });
+      jobs.push(newJob);
+    } catch (error) {
+      console.error('Error creating job from CSV row:', error);
+    }
   }
 
   return jobs;
@@ -280,40 +261,18 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
     
-    // Read existing jobs
-    const dataDir = path.join(process.cwd(), 'data');
-    const jobsFile = path.join(dataDir, 'jobs.json');
-    
-    // Create data directory if it doesn't exist
-    if (!existsSync(dataDir)) {
-      await mkdir(dataDir, { recursive: true });
-    }
-    
-    let existingJobs: Job[] = [];
-    if (existsSync(jobsFile)) {
-      try {
-        const fileContent = await readFile(jobsFile, 'utf-8');
-        existingJobs = JSON.parse(fileContent);
-      } catch (error) {
-        console.warn('Could not read existing jobs file, starting fresh');
-        existingJobs = [];
-      }
-    }
-    
-    // Add imported jobs to existing jobs
-    const allJobs = [...existingJobs, ...importedJobs];
-    
-    // Save all jobs
-    await writeFile(jobsFile, JSON.stringify(allJobs, null, 2));
-    
+    // Jobs are already saved to database via jobModel.create() above
     console.log(`Imported ${importedJobs.length} jobs successfully`);
+    
+    // Get total count from database
+    const totalResult = jobModel.findAll({}, { page: 1, limit: 1 });
     
     return NextResponse.json({
       success: true,
       message: `Successfully imported ${importedJobs.length} jobs`,
       data: {
         imported: importedJobs.length,
-        total: allJobs.length
+        total: totalResult.total
       }
     });
     

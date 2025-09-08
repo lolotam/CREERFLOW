@@ -8,7 +8,7 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { initializeDatabase, getDatabase } from '../src/lib/database';
-import { jobModel, applicationModel, contactMessageModel, contentSectionModel } from '../src/lib/models';
+import { jobModel, applicantModel, applicationModel, contactMessageModel, contentSectionModel } from '../src/lib/models';
 
 // Paths to existing JSON files
 const DATA_DIR = path.join(process.cwd(), 'data');
@@ -264,8 +264,8 @@ async function migrateContacts(): Promise<void> {
           phone: legacyContact.phone,
           subject: legacyContact.subject,
           message: legacyContact.message,
-          user_agent: legacyContact.userAgent,
-          ip_address: legacyContact.ipAddress
+          user_agent: legacyContact.userAgent || undefined,
+          ip_address: legacyContact.ipAddress || undefined
         });
 
         // Update with original ID and timestamp

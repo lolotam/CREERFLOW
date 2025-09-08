@@ -125,7 +125,7 @@ export default function Footer() {
               {jobCategories.map((category) => (
                 <li key={category.href}>
                   <Link
-                    href={category.href}
+                    href={category.href as any}
                     className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors text-sm"
                   >
                     <category.icon size={14} />
@@ -187,7 +187,7 @@ export default function Footer() {
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={link.href as any}
                     className="text-white/70 hover:text-white transition-colors text-sm"
                   >
                     {link.label}

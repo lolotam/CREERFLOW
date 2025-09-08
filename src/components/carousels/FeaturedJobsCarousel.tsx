@@ -186,7 +186,7 @@ export default function FeaturedJobsCarousel({ className = '' }: FeaturedJobsCar
 
                       {/* Apply Button */}
                       <Link
-                        href={`/apply?job=${job.id}`}
+                        href={`/apply?job=${job.id}` as any}
                         className="block w-full"
                       >
                         <motion.button

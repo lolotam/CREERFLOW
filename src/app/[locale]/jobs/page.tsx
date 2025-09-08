@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import FeaturedJobsCarousel from '@/components/carousels/FeaturedJobsCarousel';
 import JobsHeader from '@/components/jobs/JobsHeader';
@@ -14,24 +15,26 @@ export default async function JobsPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <JobSearchProvider>
-      <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-        <FeaturedJobsCarousel />
-        <JobsHeader />
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Filters Sidebar */}
-            <div className="lg:col-span-1">
-              <JobFilters />
-            </div>
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+      <JobSearchProvider>
+        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+          <FeaturedJobsCarousel />
+          <JobsHeader />
+          <div className="container mx-auto px-4 py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+              {/* Filters Sidebar */}
+              <div className="lg:col-span-1">
+                <JobFilters />
+              </div>
 
-            {/* Jobs Grid */}
-            <div className="lg:col-span-3">
-              <JobGrid />
+              {/* Jobs Grid */}
+              <div className="lg:col-span-3">
+                <JobGrid />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </JobSearchProvider>
+        </main>
+      </JobSearchProvider>
+    </Suspense>
   );
 }

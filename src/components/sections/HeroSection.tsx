@@ -29,7 +29,7 @@ export default function HeroSection() {
     if (location) params.set('location', location);
 
     // Navigate to jobs page with search parameters using Next.js router
-    router.push(`/jobs?${params.toString()}`);
+    router.push(`/jobs?${params.toString()}` as any);
   };
 
   // Get stats content or fallback to default stats
