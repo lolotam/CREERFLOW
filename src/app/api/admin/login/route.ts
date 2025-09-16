@@ -4,7 +4,18 @@ import { createAdminSession } from '@/lib/session';
 
 export async function POST(request: NextRequest) {
   try {
-    const { username, password } = await request.json();
+    let requestBody;
+    try {
+      requestBody = await request.json();
+    } catch (parseError) {
+      console.error('JSON parsing error:', parseError);
+      return NextResponse.json({
+        success: false,
+        message: 'Invalid request format - expected JSON'
+      }, { status: 400 });
+    }
+
+    const { username, password } = requestBody;
 
     // Validate input
     if (!username || !password) {
