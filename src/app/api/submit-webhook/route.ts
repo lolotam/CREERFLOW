@@ -3,7 +3,7 @@ import { writeFile, readFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
-const WEBHOOK_URL = 'https://n8n-waleed.shop/webhook-test/f369bb52-4c9d-46f4-87f5-842015b4231e';
+const WEBHOOK_URL = process.env.JOB_APPLICATION_WEBHOOK_URL || 'https://n8n-waleed.shop/webhook/f369bb52-4c9d-46f4-87f5-842015b4231e';
 
 // Helper function to save application to local storage
 const saveApplicationLocally = async (payload: any) => {

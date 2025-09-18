@@ -15,6 +15,8 @@
     "test:debug": "playwright test --debug",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
+    "test:webhooks": "playwright test tests/n8n-webhook-integration.spec.ts",
+    "test:webhooks:headed": "playwright test tests/n8n-webhook-integration.spec.ts --headed",
     "db:setup": "node scripts/setup-database.js",
     "db:seed": "node scripts/add-sample-jobs.js",
     "db:migrate": "node scripts/migrate-json-to-database.js && node scripts/migrate-contact-messages-json-to-db.js",

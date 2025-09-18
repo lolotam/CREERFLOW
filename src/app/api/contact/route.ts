@@ -49,7 +49,7 @@ async function saveContacts(contacts: ContactMessage[]): Promise<void> {
 }
 
 // Webhook configuration
-const CONTACT_WEBHOOK_URL = 'https://n8n-waleed.shop/webhook-test/2db83cc9-3a65-40e4-9283-15e80c9681cf';
+const CONTACT_WEBHOOK_URL = process.env.CONTACT_WEBHOOK_URL || 'https://n8n-waleed.shop/webhook/2db83cc9-3a65-40e4-9283-15e80c9681cf';
 
 async function sendToWebhook(contactData: any): Promise<boolean> {
   try {

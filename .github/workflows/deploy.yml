@@ -1,0 +1,210 @@
+name: CareerFlow Auto-Deploy
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run type checking
+      run: npm run type-check
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Build application
+      run: npm run build
+
+    - name: Setup database for testing
+      run: npm run db:setup
+
+    - name: Run tests
+      run: npm run test
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
+
+  security-scan:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run npm audit
+      run: npm audit --audit-level high
+      continue-on-error: true
+
+    - name: Security scan with Snyk
+      uses: snyk/actions/node@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    environment:
+      name: production
+      url: http://your-server-ip:4444
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci --production=false
+
+    - name: Build application
+      run: npm run build
+
+    - name: Deploy to production server
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+      run: |
+        # Send deployment webhook to server
+        PAYLOAD=$(cat << EOF
+        {
+          "ref": "${{ github.ref }}",
+          "repository": {
+            "name": "${{ github.repository }}",
+            "full_name": "${{ github.repository }}",
+            "html_url": "${{ github.server_url }}/${{ github.repository }}"
+          },
+          "head_commit": {
+            "id": "${{ github.sha }}",
+            "message": "${{ github.event.head_commit.message }}",
+            "author": {
+              "name": "${{ github.event.head_commit.author.name }}",
+              "email": "${{ github.event.head_commit.author.email }}"
+            },
+            "url": "${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          },
+          "pusher": {
+            "name": "${{ github.actor }}",
+            "email": "${{ github.actor }}@users.noreply.github.com"
+          },
+          "deployment": {
+            "id": "${{ github.run_id }}",
+            "environment": "production",
+            "ref": "${{ github.ref }}",
+            "sha": "${{ github.sha }}"
+          }
+        }
+        EOF
+        )
+
+        # Generate signature
+        SIGNATURE=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+
+        # Send webhook
+        response=$(curl -s -w "%{http_code}" -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-Hub-Signature-256: sha256=$SIGNATURE" \
+          -H "X-GitHub-Event: push" \
+          -H "User-Agent: GitHub-Actions" \
+          -d "$PAYLOAD" \
+          "$WEBHOOK_URL")
+
+        http_code="${response: -3}"
+        response_body="${response%???}"
+
+        echo "HTTP Status: $http_code"
+        echo "Response: $response_body"
+
+        if [ "$http_code" -eq 200 ]; then
+          echo "✅ Deployment webhook sent successfully"
+        else
+          echo "❌ Deployment webhook failed"
+          exit 1
+        fi
+
+    - name: Wait for deployment completion
+      run: |
+        echo "Waiting for deployment to complete..."
+        sleep 30
+
+        # Check health endpoint
+        for i in {1..10}; do
+          if curl -f -s "http://your-server-ip:4444/health" > /dev/null 2>&1; then
+            echo "✅ Application is healthy"
+            break
+          fi
+
+          if [ $i -eq 10 ]; then
+            echo "❌ Health check failed after 10 attempts"
+            exit 1
+          fi
+
+          echo "Health check attempt $i failed, retrying in 10 seconds..."
+          sleep 10
+        done
+
+    - name: Notify deployment status
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        channel: '#deployments'
+        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+
+  rollback:
+    runs-on: ubuntu-latest
+    if: failure() && github.ref == 'refs/heads/main'
+    needs: [deploy]
+
+    steps:
+    - name: Trigger rollback
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+      run: |
+        echo "🔄 Triggering rollback due to deployment failure..."
+
+        PAYLOAD='{"action": "rollback", "reason": "deployment_failure"}'
+        SIGNATURE=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+
+        curl -X POST \
+          -H "Content-Type: application/json" \
+          -H "X-Hub-Signature-256: sha256=$SIGNATURE" \
+          -H "X-GitHub-Event: rollback" \
+          -d "$PAYLOAD" \
+          "$WEBHOOK_URL/rollback"

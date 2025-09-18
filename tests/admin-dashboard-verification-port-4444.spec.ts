@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Admin Dashboard Verification - Port 4444', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to admin login
-    await page.goto('http://localhost:4444/admin/login');
+    await page.goto('http://localhost:4444/en/admin/login');
     await page.waitForLoadState('domcontentloaded');
     
     // Login to admin dashboard

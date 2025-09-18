@@ -13,7 +13,7 @@ interface NewsletterSubscription {
 }
 
 // Webhook configuration
-const NEWSLETTER_WEBHOOK_URL = 'https://n8n-waleed.shop/webhook-test/31160d81-3436-4e9f-a73d-3786dfe4d287';
+const NEWSLETTER_WEBHOOK_URL = process.env.NEWSLETTER_WEBHOOK_URL || 'https://n8n-waleed.shop/webhook/31160d81-3436-4e9f-a73d-3786dfe4d287';
 const SUBSCRIPTIONS_FILE_PATH = path.join(process.cwd(), 'data', 'subscriptions.json');
 
 async function ensureDataDirectory() {

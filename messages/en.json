@@ -224,7 +224,9 @@
       "subtitle": "CareerFlow Administration",
       "username": "Username",
       "password": "Password",
-      "signIn": "Sign In"
+      "signIn": "Sign In",
+      "usernamePlaceholder": "Enter username",
+      "passwordPlaceholder": "Enter password"
     }
   },
   "application": {
